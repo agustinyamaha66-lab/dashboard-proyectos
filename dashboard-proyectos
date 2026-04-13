@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valdishopper | Project Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --vs-pink: #D64294; --vs-navy: #0B1C49; --vs-white: #FFFFFF;
+            --vs-pink-subtle: #FBF0F7; --vs-pink-dark: #A02D6E;
+            --vs-navy-subtle: #EEF1F8; --vs-font-title: 'League Spartan', sans-serif;
+            --vs-font-body: 'Montserrat', sans-serif;
+            --vs-success: #1B8A5A;
+        }
+        body { font-family: var(--vs-font-body); background-color: #F5F6FA; color: var(--vs-navy); }
+        h1, h2, .font-title { font-family: var(--vs-font-title); }
+        .progress-fill { transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); background-color: var(--vs-pink); }
+        input[type="checkbox"]:checked + span { text-decoration: line-through; color: #8A94A8; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <header class="bg-[#0B1C49] p-5 shadow-lg flex justify-between items-center sticky top-0 z-50">
+        <div class="text-white text-2xl font-bold tracking-tighter font-title">
+            VALDI<span class="text-[#D64294]">SHOPPER</span>
+        </div>
+        <div class="hidden md:block text-gray-400 text-sm font-medium">Dashboard Mejora Continua</div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6">
+        <h1 class="text-3xl mb-8 text-[#0B1C49]">Seguimiento de Proyectos</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="dashboard">
+            </div>
+    </main>
+
+    <div id="toast" class="fixed bottom-6 right-6 bg-[#0B1C49] text-white text-xs p-3 rounded-lg border-l-4 border-[#1B8A5A] shadow-xl flex items-center gap-2">
+        <span id="toast-icon">✓</span> <span id="toast-msg">Dashboard actualizado</span>
+    </div>
+
+    <script>
+        const proyectos = [
+            {
+                id: 'sigmc',
+                nombre: 'SIGMC',
+                desc: 'Consolidación de información (Beetrack, PFA, Falabella). Conexión a Power BI.',
+                estado: 'En Curso',
+                tareas: [
+                    { t: 'Integración Beetrack', done: true },
+                    { t: 'Integración PFA', done: true },
+                    { t: 'Módulo Falabella', done: false },
+                    { t: 'Conexión Base de Datos Power BI', done: false }
+                ]
+            },
+            {
+                id: 'scraper',
+                nombre: 'Scraper-Geosort',
+                desc: 'Descarga semanal de información Falabella mediante automatización.',
+                estado: 'Desarrollo',
+                tareas: [
+                    { t: 'Scripts de descarga semanal', done: true },
+                    { t: 'Validación de datos extraídos', done: false }
+                ]
+            },
+            {
+                id: 'consolidacion',
+                nombre: 'Consolidación Scripts',
+                desc: 'Carga de scripts (MC, CCO, Finanzas) + Análisis IA (Generación MD).',
+                estado: 'Planificación',
+                tareas: [
+                    { t: 'Interfaz de carga de archivos', done: false },
+                    { t: 'Integración con IA para MD', done: false },
+                    { t: 'Mapeo de tareas rutinarias', done: false }
+                ]
+            },
+            {
+                id: 'ccohub',
+                nombre: 'CCO-Hub',
+                desc: 'Plataforma centralizada de gestión finalizada.',
+                estado: 'Finalizado',
+                tareas: [
+                    { t: 'Despliegue plataforma', done: true },
+                    { t: 'Pruebas de usuario', done: true }
+                ]
+            },
+            {
+                id: 'catex',
+                nombre: 'CATEX-Móvil',
+                desc: 'App móvil en fase de prueba cerrada esperando aprobación.',
+                estado: 'Pruebas',
+                tareas: [
+                    { t: 'Desarrollo módulo móvil', done: true },
+                    { t: 'Prueba cerrada con conductores', done: true },
+                    { t: 'Aprobación final personas', done: false }
+                ]
+            }
+        ];
+
+        function renderDashboard() {
+            const container = document.getElementById('dashboard');
+            container.innerHTML = proyectos.map(p => {
+                const total = p.tareas.length;
+                const completed = p.tareas.filter(t => t.done).length;
+                const percent = Math.round((completed / total) * 100);
+                
+                return `
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h2 class="text-xl font-bold text-[#0B1C49]">${p.nombre}</h2>
+                                <span class="bg-[#FBF0F7] text-[#A02D6E] text-[10px] uppercase font-bold px-2 py-1 rounded-full border border-[#F0A0CC]">
+                                    ${p.estado}
+                                </span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4 leading-relaxed">${p.desc}</p>
+                            
+                            <div class="mb-6">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-[10px] font-bold text-[#0B1C49]">PROGRESO</span>
+                                    <span class="text-[10px] font-bold text-[#D64294]">${percent}%</span>
+                                </div>
+                                <div class="w-full bg-[#EEF1F8] rounded-full h-1.5 overflow-hidden">
+                                    <div class="progress-fill h-full" style="width: ${percent}%"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                ${p.tareas.map((t, i) => `
+                                    <label class="flex items-center gap-3 p-2 hover:bg-[#F5F6FA] rounded-lg transition cursor-pointer group">
+                                        <input type="checkbox" ${t.done ? 'checked' : ''} 
+                                            onchange="updateTask('${p.id}', ${i})"
+                                            class="w-4 h-4 rounded border-gray-300 text-[#D64294] focus:ring-[#D64294]">
+                                        <span class="text-xs text-gray-700 group-hover:text-[#0B1C49]">${t.t}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTask(projId, taskIdx) {
+            const proj = proyectos.find(p => p.id === projId);
+            proj.tareas[taskIdx].done = !proj.tareas[taskIdx].done;
+            renderDashboard();
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'flex';
+            setTimeout(() => toast.style.display = 'none', 3000);
+        }
+
+        renderDashboard();
+    </script>
+</body>
+</html>

@@ -217,7 +217,7 @@
 <main>
     <div class="tab-panel active" id="panel-proyectos">
         <div class="section-title">Seguimiento de Proyectos</div>
-        <div class="section-sub">Mejora Continua · Los Ríos Region</div>
+        <div class="section-sub">Mejora Continua · Agustin Williamson</div>
         <div class="cards-grid" id="dashboard"></div>
     </div>
 
@@ -244,19 +244,20 @@ const proyectos = [
         tareas:[
             {t:'Integración Beetrack', done:true},
             {t:'Integración PFA', done:true},
-            {t:'Módulo Falabella', done:false},
-            {t:'Conexión Base de Datos Power BI', done:false}
+            {t:'Módulo Falabella', done:true},
+            {t:'Conexión Base de Datos Power BI', done:true},
+            {t:'Carga de datos automatica beetrak', done:flase}
         ]
     },
     {
-        id:'scraper', nombre:'Scraper-Geosort', estado:'Desarrollo', conexion:'SIGMC · GCP',
+        id:'scraper', nombre:'Scraper-Geosort', estado:'Finalizado', conexion:'SIGMC · GCP',
         desc_short:'Descarga semanal automatizada de información Falabella.',
         desc_long:`Automatización encargada de descargar semanalmente la información de <strong>Falabella</strong> mediante web scraping. Alimenta directamente al módulo Falabella de SIGMC. Los datos se validan antes de la carga para garantizar integridad en el flujo hacia Power BI.`,
         tareas:[
             {t:'Scripts de descarga semanal', done:true},
             {t:'Validación de datos extraídos', done:true},
             {t:'Configurar la descarga automatica', done:true},
-            {t:'Revisar información , ya que existe desconcordancia de datos', done:false}
+            {t:'Victor puede conectar con Bigquery a Power bi', done:true}
         ]
     },
     {
@@ -267,7 +268,10 @@ const proyectos = [
             {t:'Interfaz de carga de archivos', done:true},
             {t:'Integración IA para generación de documento MD', done:true},
             {t:'Mapeo de tareas rutinarias automatizables', done:true},
-            {t:'Revisar y hacer nueva interfaz', done:false}
+            {t:'Revisar y hacer nueva interfaz', done:true},
+            {t:'hacer pequeñas pruebas para su despliegue', done:true},
+            {t:'Hacerla publicar y desplegarla', done:false}
+            
         ]
     },
     {
@@ -276,7 +280,8 @@ const proyectos = [
         desc_long:`Plataforma centralizada para el equipo CCO, <strong>finalizada y en producción</strong>. Incluye despliegue completo y pruebas de usuario aprobadas. Se espera la aprobación de la app móvil <strong>CATEX-Móvil</strong> para cerrar el ecosistema completo.`,
         tareas:[
             {t:'Despliegue plataforma web', done:true},
-            {t:'Pruebas de usuario', done:true}
+            {t:'Pruebas de usuario', done:true},
+            {t:'Revisar ruteador', done:false}
         ]
     },
     {

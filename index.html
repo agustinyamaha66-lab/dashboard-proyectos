@@ -282,16 +282,37 @@
 <script>
 /* ── PROYECTOS ── */
 const proyectos = [
-    {
-        id:'sigmc', nombre:'SIGMC', estado:'En Curso', conexion:'Power BI · BigQuery',
-        desc_short:'Consolidación de información operacional y conexión Power BI.',
-        desc_long:`Sistema de consolidación de información logística. Integra datos de <strong>Beetrack</strong> (rutas) y <strong>PFA</strong>. En desarrollo el módulo de <strong>Falabella</strong>, que junto al Scraper-Geosort alimentará una base de datos central conectada a <strong>Power BI</strong> para análisis operacional en tiempo real.`,
-        tareas:[
-            {t:'Integración Beetrack', done:true},
-            {t:'Integración PFA', done:true},
-            {t:'Módulo Falabella', done:true},
-            {t:'Conexión Base de Datos Power BI', done:true},
-            {t:'Carga de datos automática Beetrack', done:false}
+{
+        id: 'sigmc', 
+        nombre: 'SIGMC', 
+        estado: 'En Curso', 
+        conexion: 'Power BI · BigQuery',
+        desc_short: 'Consolidación de información operacional y conexión Power BI.',
+        desc_long: `Sistema de consolidación de información logística. Integra datos de <strong>Beetrack</strong> (rutas) y <strong>PFA</strong>. En desarrollo el módulo de <strong>Falabella</strong>, que junto al Scraper-Geosort alimentará una base de datos central conectada a <strong>Power BI</strong> para análisis operacional en tiempo real.`,
+        tareas: [
+            { t: 'Integración Beetrack', done: true },
+            { t: 'Integración PFA', done: true },
+            { t: 'Módulo Falabella', done: true },
+            { t: 'Conexión Base de Datos Power BI', done: true },
+            { t: 'Carga de datos automática Beetrack', done: true },
+            { 
+                t: 'Carga de datos HD', 
+                done: false,
+                // Agregamos el arreglo de subtareas aquí
+                subtareas: [
+                    { t: 'Configurar script de extracción', done: true },
+                    { t: 'Validar esquema en BigQuery', done: false }
+                ]
+            },
+            { t: 'Limpiar informacion HD', done: false },
+            { 
+                t: 'Panel interactivo distintas pestañas en una sola', 
+                done: false,
+                subtareas: [
+                    { t: 'Diseñar layout base', done: false },
+                    { t: 'Implementar navegación por pestañas', done: false }
+                ]
+            }
         ]
     },
     {

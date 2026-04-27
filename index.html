@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valdishopper | Panel de Control</title>
-    <style>
+    <style>_
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F0F2F8; color: #0B1C49; line-height: 1.6; }
         header { background: #0B1C49; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
@@ -227,15 +227,23 @@ const proyectos = [
     ]
 },
 {
-    id:'Prestadores', nombre:'Prestadores habilitados viegentes' , estado:'Planificacion', conexion:'cloud ru, GCP', desc_short:'proyecto para subir archivos de finanzas a personas',
-    desc_long:'Plataforma de <strong>Camilo</strong> para consolidar la informacion y poder bajarla a personas en donde puedan consultar la informacion de 6 meses',tareas:[
-        {t:'Revisar los script', done:false,subtareas:[
-            {t:'Leer script', done:false},
-            {t:'Validar datos de los sheets compatidos', done:false},
-            {t:'Sacar información relevante para la muestra de datos'}
+    id: 'Prestadores', 
+    nombre: 'Prestadores habilitados vigentes', 
+    estado: 'Planificacion', 
+    conexion: 'Cloud Run, GCP', 
+    desc_short: 'Proyecto para subir archivos de finanzas a personas', 
+    desc_long: 'Plataforma de <strong>Camilo</strong> para consolidar la informacion y poder bajarla a personas en donde puedan consultar la informacion de 6 meses',
+    tareas: [
+        {
+            t: 'Revisar los script', 
+            done: false,
+            subtareas: [
+                {t: 'Leer script', done: false},
+                {t: 'Validar datos de los sheets compartidos', done: false},
+                {t: 'Sacar información relevante para la muestra de datos', done: false}
             ]
-        },
-             
+        }
+    ]
 }
 ];
 

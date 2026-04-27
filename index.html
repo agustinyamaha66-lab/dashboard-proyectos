@@ -6,102 +6,33 @@
     <title>Valdishopper | Panel de Control</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #F0F2F8; 
-            color: #0B1C49; 
-            line-height: 1.6;
-        }
-        
-        /* Header */
-        header {
-            background: #0B1C49;
-            padding: 0 2rem;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F0F2F8; color: #0B1C49; line-height: 1.6; }
+        header { background: #0B1C49; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 1.4rem; font-weight: 800; color: white; }
         .logo span { color: #D64294; }
         .header-sub { color: #8A94B8; font-size: .7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-        
-        /* Nav */
-        .nav-tabs {
-            background: white;
-            border-bottom: 1px solid #E4E8F3;
-            display: flex;
-            padding: 0 2rem;
-        }
-        .tab-btn {
-            padding: .85rem 1.25rem;
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            border: none;
-            background: none;
-            cursor: pointer;
-            color: #8A94B8;
-            border-bottom: 2px solid transparent;
-            transition: all .2s;
-        }
+        .nav-tabs { background: white; border-bottom: 1px solid #E4E8F3; display: flex; padding: 0 2rem; }
+        .tab-btn { padding: .85rem 1.25rem; font-size: .7rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; border: none; background: none; cursor: pointer; color: #8A94B8; border-bottom: 2px solid transparent; transition: all .2s; }
         .tab-btn:hover { color: #0B1C49; }
         .tab-btn.active { color: #D64294; border-bottom-color: #D64294; }
-        .tab-badge {
-            background: #F0F2F8;
-            color: #6B7698;
-            font-size: .6rem;
-            font-weight: 700;
-            padding: .1rem .4rem;
-            border-radius: 99px;
-            margin-left: .3rem;
-        }
+        .tab-badge { background: #F0F2F8; color: #6B7698; font-size: .6rem; font-weight: 700; padding: .1rem .4rem; border-radius: 99px; margin-left: .3rem; }
         .tab-btn.active .tab-badge { background: #D64294; color: white; }
-        
-        /* Stats */
-        .stats-bar {
-            background: white;
-            border-bottom: 1px solid #E4E8F3;
-            padding: .75rem 2rem;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-            font-size: .75rem;
-        }
+        .stats-bar { background: white; border-bottom: 1px solid #E4E8F3; padding: .75rem 2rem; display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; font-size: .75rem; }
         .stat-item { display: flex; align-items: center; gap: .4rem; }
         .stat-label { color: #8A94B8; font-weight: 600; text-transform: uppercase; font-size: .65rem; letter-spacing: .5px; }
         .stat-val { font-weight: 800; color: #0B1C49; margin-left: .2rem; }
         .stat-divider { width: 1px; background: #E4E8F3; height: 20px; }
-        
-        /* Main */
         main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
         .section-title { font-size: 1.6rem; font-weight: 800; color: #0B1C49; margin-bottom: .2rem; }
         .section-sub { font-size: .75rem; color: #8A94B8; font-weight: 500; margin-bottom: 1.5rem; }
         .tab-panel { display: none; }
         .tab-panel.active { display: block; }
-        
-        /* Cards */
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 1.25rem; }
-        .card {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #E4E8F3;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 2px 8px rgba(11,28,73,.06);
-            transition: box-shadow .2s, transform .2s;
-        }
+        .card { background: white; border-radius: 16px; border: 1px solid #E4E8F3; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(11,28,73,.06); transition: box-shadow .2s, transform .2s; }
         .card:hover { box-shadow: 0 8px 24px rgba(11,28,73,.12); transform: translateY(-2px); }
         .card-header { padding: 1.25rem 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; }
         .card-nombre { font-size: 1.1rem; font-weight: 800; color: #0B1C49; line-height: 1.2; margin-bottom: .2rem; }
         .card-desc-short { font-size: .72rem; color: #6B7698; font-weight: 500; line-height: 1.5; }
-        
         .badge { font-size: .6rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; padding: .25rem .6rem; border-radius: 20px; white-space: nowrap; }
         .badge-encurso { background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE; }
         .badge-desarrollo { background:#FFF7ED; color:#C2410C; border:1px solid #FED7AA; }
@@ -109,48 +40,20 @@
         .badge-finalizado { background:#F0FDF4; color:#15803D; border:1px solid #BBF7D0; }
         .badge-pruebas { background:#FFF0F7; color:#A02D6E; border:1px solid #F9A8D4; }
         .badge-reclutamiento { background:#FEF9C3; color:#854D0E; border:1px solid #FDE68A; }
-        
         .card-body { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: .9rem; }
-        
-        .desc-detail {
-            background: #EEF1F8;
-            border-radius: 10px;
-            padding: .85rem 1rem;
-            font-size: .72rem;
-            color: #4A5578;
-            line-height: 1.7;
-            border-left: 3px solid #D64294;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height .4s, opacity .3s;
-            opacity: 0;
-        }
+        .desc-detail { background: #EEF1F8; border-radius: 10px; padding: .85rem 1rem; font-size: .72rem; color: #4A5578; line-height: 1.7; border-left: 3px solid #D64294; max-height: 0; overflow: hidden; transition: max-height .4s, opacity .3s; opacity: 0; }
         .desc-detail.open { max-height: 300px; opacity: 1; }
-        .expand-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: .35rem;
-            font-size: .68rem;
-            font-weight: 700;
-            color: #D64294;
-            letter-spacing: .3px;
-            padding: 0;
-            text-transform: uppercase;
-        }
+        .expand-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: .35rem; font-size: .68rem; font-weight: 700; color: #D64294; letter-spacing: .3px; padding: 0; text-transform: uppercase; }
         .expand-btn svg { transition: transform .3s; width: 12px; height: 12px; }
         .expand-btn.open svg { transform: rotate(180deg); }
-        
         .progress-meta { display: flex; justify-content: space-between; margin-bottom: .4rem; }
         .progress-label { font-size: .65rem; font-weight: 700; color: #0B1C49; text-transform: uppercase; letter-spacing: .5px; }
         .progress-pct { font-size: .65rem; font-weight: 800; color: #D64294; }
         .progress-track { background: #E4E8F3; border-radius: 99px; height: 5px; overflow: hidden; }
         .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#D64294,#E87AC0); transition: width .6s; }
         .progress-fill.complete { background: linear-gradient(90deg,#1B8A5A,#2DB870); }
-        
         .tasks-list { display: flex; flex-direction: column; gap: .3rem; }
+        /* Task items */
         .task-item { display: flex; align-items: center; gap: .65rem; padding: .45rem .6rem; border-radius: 8px; cursor: pointer; transition: background .15s; }
         .task-item:hover { background: #F5F6FA; }
         .task-check { width: 16px; height: 16px; border-radius: 4px; border: 2px solid #C4CAE0; background: white; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .15s; }
@@ -159,11 +62,27 @@
         .task-check.checked svg { display: block; }
         .task-label { font-size: .72rem; color: #4A5578; font-weight: 500; line-height: 1.4; transition: all .2s; flex: 1; }
         .task-label.done { text-decoration: line-through; color: #A8B0C8; }
-        
+        /* Subtask toggle button */
+        .subtask-toggle { background: none; border: none; cursor: pointer; color: #8A94B8; padding: 2px .2rem; display: flex; align-items: center; flex-shrink: 0; transition: color .15s; border-radius: 4px; }
+        .subtask-toggle:hover { color: #D64294; background: #F0F2F8; }
+        .subtask-toggle svg { transition: transform .25s; }
+        .subtask-toggle.open svg { transform: rotate(180deg); }
+        .subtask-count { font-size: .58rem; font-weight: 700; color: #8A94B8; background: #F0F2F8; padding: .1rem .35rem; border-radius: 4px; flex-shrink: 0; }
+        /* Subtasks container */
+        .subtasks-container { max-height: 0; overflow: hidden; transition: max-height .3s ease, opacity .25s; opacity: 0; margin-left: 2rem; margin-top: 0; display: flex; flex-direction: column; gap: .15rem; }
+        .subtasks-container.open { max-height: 200px; opacity: 1; margin-top: .2rem; margin-bottom: .2rem; }
+        .subtask-item { display: flex; align-items: center; gap: .55rem; padding: .35rem .5rem; border-radius: 6px; cursor: pointer; transition: background .15s; border-left: 2px solid #E4E8F3; }
+        .subtask-item:hover { background: #F5F6FA; border-left-color: #D64294; }
+        .subtask-check { width: 13px; height: 13px; border-radius: 3px; border: 2px solid #C4CAE0; background: white; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+        .subtask-check.checked { background: #1B8A5A; border-color: #1B8A5A; }
+        .subtask-check svg { display: none; }
+        .subtask-check.checked svg { display: block; }
+        .subtask-label { font-size: .68rem; color: #6B7698; font-weight: 500; flex: 1; }
+        .subtask-label.done { text-decoration: line-through; color: #A8B0C8; }
+        /* Card footer */
         .card-footer { padding: .75rem 1.25rem; border-top: 1px solid #F0F2F8; display: flex; align-items: center; justify-content: space-between; }
         .tasks-count { font-size: .65rem; font-weight: 600; color: #A8B0C8; }
         .conn-badge { font-size: .6rem; font-weight: 700; color: #6B7698; background: #F0F2F8; padding: .2rem .5rem; border-radius: 6px; }
-        
         /* Daily */
         .daily-grid { display: flex; flex-direction: column; gap: 1rem; }
         .daily-group { background: white; border-radius: 16px; border: 1px solid #E4E8F3; overflow: hidden; box-shadow: 0 2px 8px rgba(11,28,73,.06); }
@@ -178,9 +97,8 @@
         .group-pct { font-size: .75rem; font-weight: 800; min-width: 30px; text-align: right; }
         .mini-track { width: 52px; background: #E4E8F3; border-radius: 99px; height: 4px; overflow: hidden; }
         .mini-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#D64294,#E87AC0); transition: width .5s; }
-        .group-chevron { transition: transform .3s; color: #8A94B8; width: 16px; height: 16px; }
+        .group-chevron { transition: transform .3s; color: #8A94B8; }
         .group-chevron.open { transform: rotate(180deg); }
-        
         .daily-tasks-body { padding: .5rem .75rem .75rem; display: none; }
         .daily-tasks-body.open { display: block; }
         .daily-task-row { display: flex; align-items: flex-start; gap: .65rem; padding: .55rem .5rem; border-radius: 8px; cursor: pointer; transition: background .15s; }
@@ -189,421 +107,347 @@
         .daily-task-name { font-size: .75rem; font-weight: 600; color: #2A3558; line-height: 1.4; }
         .daily-task-name.done { text-decoration: line-through; color: #A8B0C8; }
         .daily-task-note { font-size: .67rem; color: #8A94B8; font-weight: 500; margin-top: .15rem; line-height: 1.5; }
-        
         .freq-tag { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; padding: .15rem .45rem; border-radius: 5px; white-space: nowrap; flex-shrink: 0; margin-top: .15rem; }
         .freq-diario { background:#EFF6FF; color:#1D4ED8; }
         .freq-lu-ma { background:#FFF7ED; color:#C2410C; }
         .freq-adhoc { background:#F5F3FF; color:#6D28D9; }
         .freq-semanal { background:#F0FDF4; color:#15803D; }
-        
-        .reset-day-btn {
-            margin-top: 1.5rem;
-            padding: .5rem 1rem;
-            font-size: .65rem;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            background: #F0F2F8;
-            color: #6B7698;
-            border: none;
-            transition: all .15s;
-        }
+        .reset-day-btn { margin-top: 1.5rem; padding: .5rem 1rem; font-size: .65rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; border-radius: 8px; cursor: pointer; background: #F0F2F8; color: #6B7698; border: none; transition: all .15s; }
         .reset-day-btn:hover { background: #FBF0F7; color: #A02D6E; }
-        
-        /* Toast */
-        #toast {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            background: #0B1C49;
-            color: white;
-            font-size: .72rem;
-            font-weight: 600;
-            padding: .75rem 1rem;
-            border-radius: 10px;
-            border-left: 3px solid #1B8A5A;
-            box-shadow: 0 8px 24px rgba(11,28,73,.25);
-            display: none;
-            align-items: center;
-            gap: .5rem;
-            z-index: 200;
-        }
-        
-        @media(max-width:640px){
-            .nav-tabs { padding: 0 1rem; overflow-x: auto; }
-            .tab-btn { padding: .75rem .9rem; font-size: .65rem; }
-            main { padding: 1.25rem 1rem 4rem; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .stats-bar { padding: .75rem 1rem; gap: 1rem; }
-            .group-meta { display: none; }
-        }
+        #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #0B1C49; color: white; font-size: .72rem; font-weight: 600; padding: .75rem 1rem; border-radius: 10px; border-left: 3px solid #1B8A5A; box-shadow: 0 8px 24px rgba(11,28,73,.25); display: none; align-items: center; gap: .5rem; z-index: 200; }
+        @media(max-width:640px){ .nav-tabs { padding: 0 1rem; overflow-x: auto; } .tab-btn { padding: .75rem .9rem; font-size: .65rem; } main { padding: 1.25rem 1rem 4rem; } .cards-grid { grid-template-columns: 1fr; } .stats-bar { padding: .75rem 1rem; gap: 1rem; } .group-meta { display: none; } }
     </style>
 </head>
 <body>
-
 <header>
     <div class="logo">VALDI<span>SHOPPER</span></div>
     <div class="header-sub">Mejora Continua</div>
 </header>
-
 <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('proyectos')" id="tab-proyectos">
-        Proyectos <span class="tab-badge" id="tbadge-proyectos">6</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('diario')" id="tab-diario">
-        Tareas Diarias <span class="tab-badge" id="tbadge-diario">—</span>
-    </button>
+    <button class="tab-btn active" onclick="switchTab('proyectos')" id="tab-proyectos">Proyectos <span class="tab-badge" id="tbadge-proyectos">6</span></button>
+    <button class="tab-btn" onclick="switchTab('diario')" id="tab-diario">Tareas Diarias <span class="tab-badge" id="tbadge-diario">--</span></button>
 </div>
-
 <div class="stats-bar" id="stats-bar"></div>
-
 <main>
     <div class="tab-panel active" id="panel-proyectos">
         <div class="section-title">Seguimiento de Proyectos</div>
         <div class="section-sub">Mejora Continua · Agustin Williamson</div>
         <div class="cards-grid" id="dashboard"></div>
     </div>
-
     <div class="tab-panel" id="panel-diario">
         <div class="section-title">Tareas Diarias</div>
         <div class="section-sub" id="daily-date-sub">Rutina operacional de Mejora Continua</div>
         <div class="daily-grid" id="daily-grid"></div>
-        <button class="reset-day-btn" onclick="resetDay()">↺ Resetear día</button>
+        <button class="reset-day-btn" onclick="resetDay()">&#8634; Resetear dia</button>
     </div>
 </main>
-
 <div id="toast">
     <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path stroke="#1B8A5A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
     <span id="toast-msg">Actualizado</span>
 </div>
-
 <script>
-/* ── PROYECTOS ── */
 const proyectos = [
 {
-        id: 'sigmc', 
-        nombre: 'SIGMC', 
-        estado: 'En Curso', 
-        conexion: 'Power BI · BigQuery',
-        desc_short: 'Consolidación de información operacional y conexión Power BI.',
-        desc_long: `Sistema de consolidación de información logística. Integra datos de <strong>Beetrack</strong> (rutas) y <strong>PFA</strong>. En desarrollo el módulo de <strong>Falabella</strong>, que junto al Scraper-Geosort alimentará una base de datos central conectada a <strong>Power BI</strong> para análisis operacional en tiempo real.`,
-        tareas: [
-            { t: 'Integración Beetrack', done: true },
-            { t: 'Integración PFA', done: true },
-            { t: 'Módulo Falabella', done: true },
-            { t: 'Conexión Base de Datos Power BI', done: true },
-            { t: 'Carga de datos automática Beetrack', done: true },
-            { 
-                t: 'Carga de datos HD', 
-                done: false,
-                // Agregamos el arreglo de subtareas aquí
-                subtareas: [
-                    { t: 'Configurar script de extracción', done: true },
-                    { t: 'Validar esquema en BigQuery', done: false }
-                ]
-            },
-            { t: 'Limpiar informacion HD', done: false },
-            { 
-                t: 'Panel interactivo distintas pestañas en una sola', 
-                done: false,
-                subtareas: [
-                    { t: 'Diseñar layout base', done: false },
-                    { t: 'Implementar navegación por pestañas', done: false }
-                ]
-            }
-        ]
-    },
-    {
-        id:'scraper', nombre:'Scraper-Geosort', estado:'Finalizado', conexion:'SIGMC · GCP',
-        desc_short:'Descarga semanal automatizada de información Falabella.',
-        desc_long:`Automatización encargada de descargar semanalmente la información de <strong>Falabella</strong> mediante web scraping. Alimenta directamente al módulo Falabella de SIGMC. Los datos se validan antes de la carga para garantizar integridad en el flujo hacia Power BI.`,
-        tareas:[
-            {t:'Scripts de descarga semanal', done:true},
-            {t:'Validación de datos extraídos', done:true},
-            {t:'Configurar la descarga automática', done:true},
-            {t:'Victor puede conectar con BigQuery a Power BI', done:true}
-        ]
-    },
-    {
-        id:'consolidacion', nombre:'Consolidación Scripts', estado:'Planificación', conexion:'IA · Multi-depto',
-        desc_short:'Plataforma de carga de scripts con análisis IA y detección de automatizaciones.',
-        desc_long:`Plataforma para que los departamentos (<strong>MC, CCO, Finanzas, Personas</strong>) suban sus scripts. La <strong>IA generativa</strong> crea un <code>.md</code> explicando el proyecto y analiza los procesos para <strong>identificar tareas rutinarias automatizables</strong> y oportunidades de mejora futura.`,
-        tareas:[
-            {t:'Interfaz de carga de archivos', done:true},
-            {t:'Integración IA para generación de documento MD', done:true},
-            {t:'Mapeo de tareas rutinarias automatizables', done:true},
-            {t:'Revisar y hacer nueva interfaz', done:true},
-            {t:'Hacer pequeñas pruebas para su despliegue', done:true},
-            {t:'Hacerla publicar y desplegarla', done:false}
-        ]
-    },
-    {
-        id:'ccohub', nombre:'CCO-Hub', estado:'Finalizado', conexion:'Cloud Run · GCP',
-        desc_short:'Plataforma centralizada de gestión CCO. Completamente desplegada.',
-        desc_long:`Plataforma centralizada para el equipo CCO, <strong>finalizada y en producción</strong>. Incluye despliegue completo y pruebas de usuario aprobadas. Se espera la aprobación de la app móvil <strong>CATEX-Móvil</strong> para cerrar el ecosistema completo.`,
-        tareas:[
-            {t:'Despliegue plataforma web', done:true},
-            {t:'Pruebas de usuario', done:true},
-            {t:'Revisar ruteador', done:false}
-        ]
-    },
-    {
-        id:'catex', nombre:'CATEX-Móvil', estado:'Pruebas', conexion:'Android · Play Store',
-        desc_short:'App móvil en prueba cerrada, pendiente aprobación de personas faltantes.',
-        desc_long:`App móvil complementaria a CCO-Hub. En <strong>fase de prueba cerrada</strong> con conductores. Pendiente la <strong>aprobación de las personas faltantes</strong> para publicar la versión definitiva y cerrar el ciclo del ecosistema CCO.`,
-        tareas:[
-            {t:'Desarrollo módulo móvil', done:true},
-            {t:'Prueba cerrada con conductores', done:true},
-            {t:'Aprobación personas faltantes', done:false},
-            {t:'Actualización de las pestañas', done:false}
-        ]
-    },
-    {
-        id:'coordinadores', nombre:'Coordinadores Valdishopper', estado:'Reclutamiento', conexion:'Android · Play Store',
-        desc_short:'App de Víctor publicada. En proceso de reclutamiento y elaboración de manual.',
-        desc_long:`App móvil de <strong>Víctor</strong> para Coordinadores de Sala. El archivo <strong>AAB fue generado y publicado en Play Store</strong>. Actualmente en proceso de <strong>reclutamiento de usuarios</strong> (obtención de correos) y elaboración del <strong>manual de uso</strong> para cuando se entreguen los accesos correspondientes.`,
-        tareas:[
-            {t:'Generación y subida AAB a Play Store', done:true},
-            {t:'Proceso de reclutamiento de usuarios', done:true},
-            {t:'Obtención de correos coordinadores', done:true},
-            {t:'Elaboración de manual de uso', done:true},
-            {t:'Confirmación de reclutados y app instalada', done:false},
-            {t:'Actualización de nuevas funciones o visuales (14 días)', done:false}
-        ]
-    }
+    id:'sigmc', nombre:'SIGMC', estado:'En Curso', conexion:'Power BI - BigQuery',
+    desc_short:'Consolidacion de informacion operacional y conexion Power BI.',
+    desc_long:'Sistema de consolidacion de informacion logistica. Integra datos de <strong>Beetrack</strong> (rutas) y <strong>PFA</strong>. En desarrollo el modulo de <strong>Falabella</strong>, que junto al Scraper-Geosort alimentara una base de datos central conectada a <strong>Power BI</strong> para analisis operacional en tiempo real.',
+    tareas:[
+        {t:'Integracion Beetrack', done:true},
+        {t:'Integracion PFA', done:true},
+        {t:'Modulo Falabella', done:true},
+        {t:'Conexion Base de Datos Power BI', done:true},
+        {t:'Carga de datos automatica Beetrack', done:true},
+        {t:'Carga de datos HD', done:false, subtareas:[
+            {t:'Configurar script de extraccion', done:true},
+            {t:'Validar esquema en BigQuery', done:false}
+        ]},
+        {t:'Limpiar informacion HD', done:false},
+        {t:'Panel interactivo distintas pestanas en una sola', done:false, subtareas:[
+            {t:'Diseñar layout base', done:false},
+            {t:'Implementar navegacion por pestañas', done:false}
+        ]}
+    ]
+},
+{
+    id:'scraper', nombre:'Scraper-Geosort', estado:'Finalizado', conexion:'SIGMC - GCP',
+    desc_short:'Descarga semanal automatizada de informacion Falabella.',
+    desc_long:'Automatizacion encargada de descargar semanalmente la informacion de <strong>Falabella</strong> mediante web scraping. Alimenta directamente al modulo Falabella de SIGMC.',
+    tareas:[
+        {t:'Scripts de descarga semanal', done:true},
+        {t:'Validacion de datos extraidos', done:true},
+        {t:'Configurar la descarga automatica', done:true},
+        {t:'Victor puede conectar con BigQuery a Power BI', done:true}
+    ]
+},
+{
+    id:'consolidacion', nombre:'Consolidacion Scripts', estado:'Planificacion', conexion:'IA - Multi-depto',
+    desc_short:'Plataforma de carga de scripts con analisis IA y deteccion de automatizaciones.',
+    desc_long:'Plataforma para que los departamentos suban sus scripts. La <strong>IA generativa</strong> crea un <code>.md</code> explicando el proyecto y analiza los procesos para identificar tareas rutinarias automatizables.',
+    tareas:[
+        {t:'Interfaz de carga de archivos', done:true},
+        {t:'Integracion IA para generacion de documento MD', done:true},
+        {t:'Mapeo de tareas rutinarias automatizables', done:true},
+        {t:'Revisar y hacer nueva interfaz', done:true},
+        {t:'Hacer pequenas pruebas para su despliegue', done:true},
+        {t:'Hacerla publicar y desplegarla', done:false}
+    ]
+},
+{
+    id:'ccohub', nombre:'CCO-Hub', estado:'Finalizado', conexion:'Cloud Run - GCP',
+    desc_short:'Plataforma centralizada de gestion CCO. Completamente desplegada.',
+    desc_long:'Plataforma centralizada para el equipo CCO, <strong>finalizada y en produccion</strong>. Incluye despliegue completo y pruebas de usuario aprobadas.',
+    tareas:[
+        {t:'Despliegue plataforma web', done:true},
+        {t:'Pruebas de usuario', done:true},
+        {t:'Revisar ruteador', done:false}
+    ]
+},
+{
+    id:'catex', nombre:'CATEX-Movil', estado:'Pruebas', conexion:'Android - Play Store',
+    desc_short:'App movil en prueba cerrada, pendiente aprobacion de personas faltantes.',
+    desc_long:'App movil complementaria a CCO-Hub. En <strong>fase de prueba cerrada</strong> con conductores.',
+    tareas:[
+        {t:'Desarrollo modulo movil', done:true},
+        {t:'Prueba cerrada con conductores', done:true},
+        {t:'Aprobacion personas faltantes', done:false},
+        {t:'Actualizacion de las pestanas', done:false}
+    ]
+},
+{
+    id:'coordinadores', nombre:'Coordinadores Valdishopper', estado:'Reclutamiento', conexion:'Android - Play Store',
+    desc_short:'App de Victor publicada. En proceso de reclutamiento y elaboracion de manual.',
+    desc_long:'App movil de <strong>Victor</strong> para Coordinadores de Sala. El archivo <strong>AAB fue generado y publicado en Play Store</strong>.',
+    tareas:[
+        {t:'Generacion y subida AAB a Play Store', done:true},
+        {t:'Proceso de reclutamiento de usuarios', done:true},
+        {t:'Obtencion de correos coordinadores', done:true},
+        {t:'Elaboracion de manual de uso', done:true},
+        {t:'Confirmacion de reclutados y app instalada', done:false},
+        {t:'Actualizacion de nuevas funciones o visuales (14 dias)', done:false}
+    ]
+}
 ];
 
-/* ── TAREAS DIARIAS ── */
 const dailyGroups = [
-    {
-        id:'scrapers', name:'Revisión de Scrapers', icon:'🔍', iconBg:'#EFF6FF',
-        meta:'Verificar funcionamiento y descarga correcta de información',
-        tasks:[
-            { id:'s1', name:'Revisar scrapers de ROTOR (proyecto Guillermo)', note:'Confirmar que estén corriendo y enviando información a los buckets GCP correspondientes.', freq:'diario' },
-            { id:'s2', name:'Revisar scrapers autónomos — carga correcta', note:'Verificar que los datos subidos sean completos y sin errores de formato.', freq:'diario' },
-            { id:'s3', name:'Comprobar buckets de almacenamiento GCP', note:'Cada scraper debe haber subido correctamente su archivo al bucket asignado.', freq:'diario' },
-        ]
-    },
-    {
-        id:'agenda', name:'Agenda y Proyectos', icon:'📋', iconBg:'#F5F3FF',
-        meta:'Organización del día y avance en proyectos activos',
-        tasks:[
-            { id:'a1', name:'Organizar agenda del día con proyectos activos', note:'Priorizar según estado de proyectos y reuniones programadas.', freq:'diario' },
-            { id:'a2', name:'Avance en proyectos: comentar y documentar código', note:'Incluye nuevas funcionalidades y mejoras sobre lo existente.', freq:'diario' },
-            { id:'a3', name:'Revisión y modificación de scrapers existentes', note:'Ajustes según incidencias detectadas o mejoras planificadas.', freq:'diario' },
-        ]
-    },
-    {
-        id:'falabella', name:'Actualización Falabella → Power BI', icon:'📊', iconBg:'#FFF7ED',
-        meta:'Carga manual (Víctor de vacaciones) · Solo Lunes o Martes',
-        tasks:[
-            { id:'f1', name:'Subir archivos Falabella actualizados al Power BI', note:'Carga manual para tener la data lista para la reunión del miércoles.', freq:'lu-ma' },
-            { id:'f2', name:'Verificar datos cargados en el reporte', note:'Revisar tablas y visualizaciones antes de la reunión.', freq:'lu-ma' },
-        ]
-    },
-    {
-        id:'solicitudes', name:'Solicitudes y Apoyo Ad-hoc', icon:'🤝', iconBg:'#FFF0F7',
-        meta:'Peticiones de otros equipos — surgen durante el día',
-        tasks:[
-            { id:'r1', name:'Atender solicitudes de otros equipos o personas', note:'Priorizar según urgencia. Pueden llegar en cualquier momento del día.', freq:'adhoc' },
-            { id:'r2', name:'Registrar brevemente lo atendido', note:'Nota rápida de qué se ayudó y a quién, para trazabilidad.', freq:'adhoc' },
-        ]
-    }
+    {id:'scrapers', name:'Revision de Scrapers', icon:'&#128269;', iconBg:'#EFF6FF', meta:'Verificar funcionamiento y descarga correcta de informacion', tasks:[
+        {id:'s1', name:'Revisar scrapers de ROTOR (proyecto Guillermo)', note:'Confirmar que esten corriendo y enviando informacion a los buckets GCP.', freq:'diario'},
+        {id:'s2', name:'Revisar scrapers autonomos -- carga correcta', note:'Verificar que los datos subidos sean completos y sin errores de formato.', freq:'diario'},
+        {id:'s3', name:'Comprobar buckets de almacenamiento GCP', note:'Cada scraper debe haber subido correctamente su archivo al bucket asignado.', freq:'diario'},
+    ]},
+    {id:'agenda', name:'Agenda y Proyectos', icon:'&#128203;', iconBg:'#F5F3FF', meta:'Organizacion del dia y avance en proyectos activos', tasks:[
+        {id:'a1', name:'Organizar agenda del dia con proyectos activos', note:'Priorizar segun estado de proyectos y reuniones programadas.', freq:'diario'},
+        {id:'a2', name:'Avance en proyectos: comentar y documentar codigo', note:'Incluye nuevas funcionalidades y mejoras sobre lo existente.', freq:'diario'},
+        {id:'a3', name:'Revision y modificacion de scrapers existentes', note:'Ajustes segun incidencias detectadas o mejoras planificadas.', freq:'diario'},
+    ]},
+    {id:'falabella', name:'Actualizacion Falabella Power BI', icon:'&#128202;', iconBg:'#FFF7ED', meta:'Carga manual (Victor de vacaciones) Solo Lunes o Martes', tasks:[
+        {id:'f1', name:'Subir archivos Falabella actualizados al Power BI', note:'Carga manual para tener la data lista para la reunion del miercoles.', freq:'lu-ma'},
+        {id:'f2', name:'Verificar datos cargados en el reporte', note:'Revisar tablas y visualizaciones antes de la reunion.', freq:'lu-ma'},
+    ]},
+    {id:'solicitudes', name:'Solicitudes y Apoyo Ad-hoc', icon:'&#129309;', iconBg:'#FFF0F7', meta:'Peticiones de otros equipos -- surgen durante el dia', tasks:[
+        {id:'r1', name:'Atender solicitudes de otros equipos o personas', note:'Priorizar segun urgencia. Pueden llegar en cualquier momento del dia.', freq:'adhoc'},
+        {id:'r2', name:'Registrar brevemente lo atendido', note:'Nota rapida de que se ayudo y a quien, para trazabilidad.', freq:'adhoc'},
+    ]}
 ];
 
-const freqLabel = { 'diario':'Diario','lu-ma':'Lun · Mar','adhoc':'Ad-hoc','semanal':'Semanal' };
-const estadoBadge = {
-    'En Curso':'badge-encurso','Desarrollo':'badge-desarrollo','Planificación':'badge-planificacion',
-    'Finalizado':'badge-finalizado','Pruebas':'badge-pruebas','Reclutamiento':'badge-reclutamiento'
-};
+const freqLabel = {'diario':'Diario','lu-ma':'Lun Mar','adhoc':'Ad-hoc','semanal':'Semanal'};
+const estadoBadge = {'En Curso':'badge-encurso','Desarrollo':'badge-desarrollo','Planificacion':'badge-planificacion','Finalizado':'badge-finalizado','Pruebas':'badge-pruebas','Reclutamiento':'badge-reclutamiento'};
 
-/* ── Daily state (sessionStorage) ── */
-let dailyState = (()=>{
-    const today = new Date().toDateString();
-    try { const r = JSON.parse(sessionStorage.getItem('vs_daily')||'{}'); if(r.date===today) return r.tasks; } catch(e){}
-    const s={};
-    dailyGroups.forEach(g=>g.tasks.forEach(t=>s[t.id]=false));
+let dailyState = (function(){
+    var today = new Date().toDateString();
+    try { var r = JSON.parse(sessionStorage.getItem('vs_daily')||'{}'); if(r.date===today) return r.tasks; } catch(e){}
+    var s={};
+    dailyGroups.forEach(function(g){g.tasks.forEach(function(t){s[t.id]=false;});});
     return s;
 })();
 function saveDS(){ try{ sessionStorage.setItem('vs_daily',JSON.stringify({date:new Date().toDateString(),tasks:dailyState})); }catch(e){} }
 
-const checkSVG = `<svg width="10" height="10" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`;
-const chevSVG  = `<svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>`;
+var checkSVG = '<svg width="10" height="10" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+var checkSVGsm = '<svg width="8" height="8" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+var chevSVG = '<svg width="12" height="12" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>';
+var chevSVGsm = '<svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>';
 
-/* ── Render proyectos ── */
 function renderDashboard(){
-    document.getElementById('dashboard').innerHTML = proyectos.map(p=>{
-        const total=p.tareas.length, comp=p.tareas.filter(t=>t.done).length, pct=total?Math.round(comp/total*100):0;
-        return `
-        <div class="card" id="card-${p.id}">
-            <div class="card-header">
-                <div class="card-title-row">
-                    <div class="card-nombre">${p.nombre}</div>
-                    <div class="card-desc-short">${p.desc_short}</div>
-                </div>
-                <span class="badge ${estadoBadge[p.estado]||'badge-encurso'}">${p.estado}</span>
-            </div>
-            <div class="card-body">
-                <button class="expand-btn" id="btn-${p.id}" onclick="toggleDesc('${p.id}')">${chevSVG} Ver descripción</button>
-                <div class="desc-detail" id="desc-${p.id}">${p.desc_long}</div>
-                <div>
-                    <div class="progress-meta">
-                        <span class="progress-label">Progreso</span>
-                        <span class="progress-pct" id="pct-${p.id}">${pct}%</span>
-                    </div>
-                    <div class="progress-track"><div class="progress-fill ${pct===100?'complete':''}" id="fill-${p.id}" style="width:${pct}%"></div></div>
-                </div>
-                <div class="tasks-list">
-                    ${p.tareas.map((t,i)=>`
-                    <div class="task-item" onclick="updateTask('${p.id}',${i})">
-                        <div class="task-check ${t.done?'checked':''}" id="chk-${p.id}-${i}">${checkSVG}</div>
-                        <span class="task-label ${t.done?'done':''}" id="lbl-${p.id}-${i}">${t.t}</span>
-                    </div>`).join('')}
-                </div>
-            </div>
-            <div class="card-footer">
-                <span class="tasks-count" id="foot-${p.id}">${comp} de ${total} tareas</span>
-                ${p.conexion?`<span class="conn-badge">${p.conexion}</span>`:''}
-            </div>
-        </div>`;
+    document.getElementById('dashboard').innerHTML = proyectos.map(function(p){
+        var total=p.tareas.length, comp=p.tareas.filter(function(t){return t.done;}).length, pct=total?Math.round(comp/total*100):0;
+        var tareasHtml = p.tareas.map(function(t,i){
+            var hasSub = t.subtareas && t.subtareas.length > 0;
+            var subComp = hasSub ? t.subtareas.filter(function(s){return s.done;}).length : 0;
+            var subTotal = hasSub ? t.subtareas.length : 0;
+            var rowHtml = '<div class="task-item" onclick="updateTask(\''+p.id+'\','+i+')">'
+                + '<div class="task-check '+(t.done?'checked':'')+'" id="chk-'+p.id+'-'+i+'">'+checkSVG+'</div>'
+                + '<span class="task-label '+(t.done?'done':'')+'" id="lbl-'+p.id+'-'+i+'">'+t.t+'</span>';
+            if(hasSub){
+                rowHtml += '<span class="subtask-count" id="subcnt-'+p.id+'-'+i+'">'+subComp+'/'+subTotal+'</span>'
+                    + '<button class="subtask-toggle" id="stoggle-'+p.id+'-'+i+'" onclick="event.stopPropagation();toggleSubtasks(\''+p.id+'\','+i+')" title="Ver subtareas">'+chevSVGsm+'</button>';
+            }
+            rowHtml += '</div>';
+            if(hasSub){
+                rowHtml += '<div class="subtasks-container" id="subs-'+p.id+'-'+i+'">'
+                    + t.subtareas.map(function(s,j){
+                        return '<div class="subtask-item" onclick="updateSubtask(\''+p.id+'\','+i+','+j+')">'
+                            + '<div class="subtask-check '+(s.done?'checked':'')+'" id="schk-'+p.id+'-'+i+'-'+j+'">'+checkSVGsm+'</div>'
+                            + '<span class="subtask-label '+(s.done?'done':'')+'" id="slbl-'+p.id+'-'+i+'-'+j+'">'+s.t+'</span>'
+                            + '</div>';
+                    }).join('')
+                    + '</div>';
+            }
+            return '<div>'+rowHtml+'</div>';
+        }).join('');
+        return '<div class="card" id="card-'+p.id+'">'
+            + '<div class="card-header"><div class="card-title-row"><div class="card-nombre">'+p.nombre+'</div><div class="card-desc-short">'+p.desc_short+'</div></div>'
+            + '<span class="badge '+(estadoBadge[p.estado]||'badge-encurso')+'">'+p.estado+'</span></div>'
+            + '<div class="card-body">'
+            + '<button class="expand-btn" id="btn-'+p.id+'" onclick="toggleDesc(\''+p.id+'\')">'+chevSVG+' Ver descripcion</button>'
+            + '<div class="desc-detail" id="desc-'+p.id+'">'+p.desc_long+'</div>'
+            + '<div><div class="progress-meta"><span class="progress-label">Progreso</span><span class="progress-pct" id="pct-'+p.id+'">'+pct+'%</span></div>'
+            + '<div class="progress-track"><div class="progress-fill '+(pct===100?'complete':'')+'" id="fill-'+p.id+'" style="width:'+pct+'%"></div></div></div>'
+            + '<div class="tasks-list">'+tareasHtml+'</div>'
+            + '</div>'
+            + '<div class="card-footer"><span class="tasks-count" id="foot-'+p.id+'">'+comp+' de '+total+' tareas</span>'
+            + (p.conexion?'<span class="conn-badge">'+p.conexion+'</span>':'')+'</div>'
+            + '</div>';
     }).join('');
     document.getElementById('tbadge-proyectos').textContent = proyectos.length;
 }
 
+function toggleSubtasks(projId, idx){
+    var container = document.getElementById('subs-'+projId+'-'+idx);
+    var btn = document.getElementById('stoggle-'+projId+'-'+idx);
+    var isOpen = container.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+}
+
 function toggleDesc(id){
-    const d=document.getElementById(`desc-${id}`), b=document.getElementById(`btn-${id}`);
-    const o=d.classList.toggle('open');
+    var d=document.getElementById('desc-'+id), b=document.getElementById('btn-'+id);
+    var o=d.classList.toggle('open');
     b.classList.toggle('open',o);
-    b.innerHTML=`${chevSVG} ${o?'Ocultar descripción':'Ver descripción'}`;
+    b.innerHTML=chevSVG+' '+(o?'Ocultar descripcion':'Ver descripcion');
 }
 
 function updateTask(projId,idx){
-    const p=proyectos.find(x=>x.id===projId);
+    var p=proyectos.find(function(x){return x.id===projId;});
     p.tareas[idx].done=!p.tareas[idx].done;
-    const done=p.tareas[idx].done;
-    document.getElementById(`chk-${projId}-${idx}`).classList.toggle('checked',done);
-    document.getElementById(`lbl-${projId}-${idx}`).classList.toggle('done',done);
-    const total=p.tareas.length, comp=p.tareas.filter(t=>t.done).length, pct=Math.round(comp/total*100);
-    const fill=document.getElementById(`fill-${projId}`);
+    var done=p.tareas[idx].done;
+    document.getElementById('chk-'+projId+'-'+idx).classList.toggle('checked',done);
+    document.getElementById('lbl-'+projId+'-'+idx).classList.toggle('done',done);
+    var total=p.tareas.length, comp=p.tareas.filter(function(t){return t.done;}).length, pct=Math.round(comp/total*100);
+    var fill=document.getElementById('fill-'+projId);
     fill.style.width=pct+'%'; fill.classList.toggle('complete',pct===100);
-    document.getElementById(`pct-${projId}`).textContent=pct+'%';
-    document.getElementById(`foot-${projId}`).textContent=`${comp} de ${total} tareas`;
+    document.getElementById('pct-'+projId).textContent=pct+'%';
+    document.getElementById('foot-'+projId).textContent=comp+' de '+total+' tareas';
     renderStats(); showToast(done?'Tarea completada':'Tarea desmarcada');
 }
 
-/* ── Render diario ── */
-function renderDaily(){
-    const now=new Date();
-    const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-    const meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    document.getElementById('daily-date-sub').textContent=`${dias[now.getDay()]} ${now.getDate()} de ${meses[now.getMonth()]} · Rutina operacional`;
+function updateSubtask(projId, tareaIdx, subIdx){
+    var p=proyectos.find(function(x){return x.id===projId;});
+    var sub=p.tareas[tareaIdx].subtareas[subIdx];
+    sub.done=!sub.done;
+    document.getElementById('schk-'+projId+'-'+tareaIdx+'-'+subIdx).classList.toggle('checked',sub.done);
+    document.getElementById('slbl-'+projId+'-'+tareaIdx+'-'+subIdx).classList.toggle('done',sub.done);
+    var subs=p.tareas[tareaIdx].subtareas;
+    var subComp=subs.filter(function(s){return s.done;}).length;
+    var cntEl=document.getElementById('subcnt-'+projId+'-'+tareaIdx);
+    if(cntEl) cntEl.textContent=subComp+'/'+subs.length;
+    showToast(sub.done?'Subtarea completada':'Subtarea desmarcada');
+}
 
-    document.getElementById('daily-grid').innerHTML = dailyGroups.map(g=>{
-        const total=g.tasks.length, done=g.tasks.filter(t=>dailyState[t.id]).length, pct=Math.round(done/total*100);
-        const pctColor = pct===100?'#15803D':'#D64294';
-        return `
-        <div class="daily-group">
-            <div class="daily-group-header" onclick="toggleGroup('${g.id}')" id="ghdr-${g.id}">
-                <div class="group-icon" style="background:${g.iconBg}">${g.icon}</div>
-                <div class="group-info">
-                    <div class="group-name">${g.name}</div>
-                    <div class="group-meta">${g.meta}</div>
-                </div>
-                <div class="group-right">
-                    <div class="mini-track"><div class="mini-fill" id="mfill-${g.id}" style="width:${pct}%"></div></div>
-                    <span class="group-pct" id="gpct-${g.id}" style="color:${pctColor}">${done}/${total}</span>
-                    <svg class="group-chevron" id="gchev-${g.id}" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="#8A94B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
-                </div>
-            </div>
-            <div class="daily-tasks-body" id="gbody-${g.id}">
-                ${g.tasks.map(t=>`
-                <div class="daily-task-row" onclick="toggleDaily('${t.id}','${g.id}')">
-                    <div class="task-check ${dailyState[t.id]?'checked':''}" id="dchk-${t.id}" style="margin-top:2px">${checkSVG}</div>
-                    <div class="daily-task-content">
-                        <div class="daily-task-name ${dailyState[t.id]?'done':''}" id="dlbl-${t.id}">${t.name}</div>
-                        <div class="daily-task-note">${t.note}</div>
-                    </div>
-                    <span class="freq-tag freq-${t.freq}">${freqLabel[t.freq]}</span>
-                </div>`).join('')}
-            </div>
-        </div>`;
+function renderDaily(){
+    var now=new Date();
+    var dias=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+    var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    document.getElementById('daily-date-sub').textContent=dias[now.getDay()]+' '+now.getDate()+' de '+meses[now.getMonth()]+' - Rutina operacional';
+    document.getElementById('daily-grid').innerHTML = dailyGroups.map(function(g){
+        var total=g.tasks.length, done=g.tasks.filter(function(t){return dailyState[t.id];}).length, pct=Math.round(done/total*100);
+        var pctColor=pct===100?'#15803D':'#D64294';
+        return '<div class="daily-group">'
+            + '<div class="daily-group-header" onclick="toggleGroup(\''+g.id+'\')" id="ghdr-'+g.id+'">'
+            + '<div class="group-icon" style="background:'+g.iconBg+'">'+g.icon+'</div>'
+            + '<div class="group-info"><div class="group-name">'+g.name+'</div><div class="group-meta">'+g.meta+'</div></div>'
+            + '<div class="group-right"><div class="mini-track"><div class="mini-fill" id="mfill-'+g.id+'" style="width:'+pct+'%"></div></div>'
+            + '<span class="group-pct" id="gpct-'+g.id+'" style="color:'+pctColor+'">'+done+'/'+total+'</span>'
+            + '<svg class="group-chevron" id="gchev-'+g.id+'" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="#8A94B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>'
+            + '</div></div>'
+            + '<div class="daily-tasks-body" id="gbody-'+g.id+'">'
+            + g.tasks.map(function(t){
+                return '<div class="daily-task-row" onclick="toggleDaily(\''+t.id+'\',\''+g.id+'\')">'
+                    + '<div class="task-check '+(dailyState[t.id]?'checked':'')+'" id="dchk-'+t.id+'" style="margin-top:2px">'+checkSVG+'</div>'
+                    + '<div class="daily-task-content"><div class="daily-task-name '+(dailyState[t.id]?'done':'')+'" id="dlbl-'+t.id+'">'+t.name+'</div>'
+                    + '<div class="daily-task-note">'+t.note+'</div></div>'
+                    + '<span class="freq-tag freq-'+t.freq+'">'+freqLabel[t.freq]+'</span></div>';
+            }).join('')
+            + '</div></div>';
     }).join('');
     updateDailyBadge();
 }
 
 function toggleGroup(id){
-    document.getElementById(`gbody-${id}`).classList.toggle('open');
-    document.getElementById(`gchev-${id}`).classList.toggle('open');
-    document.getElementById(`ghdr-${id}`).classList.toggle('open');
+    document.getElementById('gbody-'+id).classList.toggle('open');
+    document.getElementById('gchev-'+id).classList.toggle('open');
+    document.getElementById('ghdr-'+id).classList.toggle('open');
 }
 
 function toggleDaily(taskId,groupId){
     dailyState[taskId]=!dailyState[taskId]; saveDS();
-    const done=dailyState[taskId];
-    document.getElementById(`dchk-${taskId}`).classList.toggle('checked',done);
-    document.getElementById(`dlbl-${taskId}`).classList.toggle('done',done);
-    const g=dailyGroups.find(x=>x.id===groupId);
-    const total=g.tasks.length, doneC=g.tasks.filter(t=>dailyState[t.id]).length, pct=Math.round(doneC/total*100);
-    document.getElementById(`mfill-${groupId}`).style.width=pct+'%';
-    const gp=document.getElementById(`gpct-${groupId}`);
-    gp.textContent=`${doneC}/${total}`; gp.style.color=pct===100?'#15803D':'#D64294';
+    var done=dailyState[taskId];
+    document.getElementById('dchk-'+taskId).classList.toggle('checked',done);
+    document.getElementById('dlbl-'+taskId).classList.toggle('done',done);
+    var g=dailyGroups.find(function(x){return x.id===groupId;});
+    var total=g.tasks.length, doneC=g.tasks.filter(function(t){return dailyState[t.id];}).length, pct=Math.round(doneC/total*100);
+    document.getElementById('mfill-'+groupId).style.width=pct+'%';
+    var gp=document.getElementById('gpct-'+groupId);
+    gp.textContent=doneC+'/'+total; gp.style.color=pct===100?'#15803D':'#D64294';
     updateDailyBadge(); renderStats(); showToast(done?'Tarea completada':'Desmarcada');
 }
 
 function updateDailyBadge(){
-    const all=Object.values(dailyState), done=all.filter(Boolean).length;
-    document.getElementById('tbadge-diario').textContent=`${done}/${all.length}`;
+    var all=Object.values(dailyState), done=all.filter(Boolean).length;
+    document.getElementById('tbadge-diario').textContent=done+'/'+all.length;
 }
 
 function resetDay(){
-    Object.keys(dailyState).forEach(k=>dailyState[k]=false); saveDS();
-    renderDaily(); renderStats(); showToast('Día reseteado');
+    Object.keys(dailyState).forEach(function(k){dailyState[k]=false;}); saveDS();
+    renderDaily(); renderStats(); showToast('Dia reseteado');
 }
 
-/* ── Stats bar ── */
 function renderStats(){
-    const bar=document.getElementById('stats-bar');
-    const activeTab=document.querySelector('.tab-btn.active').id.replace('tab-','');
+    var bar=document.getElementById('stats-bar');
+    var activeTab=document.querySelector('.tab-btn.active').id.replace('tab-','');
     if(activeTab==='proyectos'){
-        const counts={};
-        proyectos.forEach(p=>counts[p.estado]=(counts[p.estado]||0)+1);
-        const totalT=proyectos.reduce((a,p)=>a+p.tareas.length,0);
-        const doneT=proyectos.reduce((a,p)=>a+p.tareas.filter(t=>t.done).length,0);
-        const colors={'Finalizado':'#15803D','En Curso':'#1D4ED8','Desarrollo':'#C2410C','Pruebas':'#A02D6E','Planificación':'#6D28D9','Reclutamiento':'#854D0E'};
-        let h=`<div class="stat-item"><span class="stat-label">Proyectos</span><span class="stat-val">${proyectos.length}</span></div><div class="stat-divider"></div>`;
-        Object.entries(counts).filter(([,v])=>v>0).forEach(([k,v])=>{
-            h+=`<div class="stat-item"><span class="stat-dot" style="background:${colors[k]||'#888'}"></span><span class="stat-label">${k}</span><span class="stat-val">${v}</span></div>`;
+        var counts={};
+        proyectos.forEach(function(p){counts[p.estado]=(counts[p.estado]||0)+1;});
+        var totalT=proyectos.reduce(function(a,p){return a+p.tareas.length;},0);
+        var doneT=proyectos.reduce(function(a,p){return a+p.tareas.filter(function(t){return t.done;}).length;},0);
+        var colors={'Finalizado':'#15803D','En Curso':'#1D4ED8','Desarrollo':'#C2410C','Pruebas':'#A02D6E','Planificacion':'#6D28D9','Reclutamiento':'#854D0E'};
+        var h='<div class="stat-item"><span class="stat-label">Proyectos</span><span class="stat-val">'+proyectos.length+'</span></div><div class="stat-divider"></div>';
+        Object.entries(counts).filter(function(e){return e[1]>0;}).forEach(function(e){
+            h+='<div class="stat-item"><span class="stat-label" style="color:'+(colors[e[0]]||'#888')+'">'+e[0]+'</span><span class="stat-val">'+e[1]+'</span></div>';
         });
-        h+=`<div class="stat-divider" style="margin-left:auto"></div><div class="stat-item"><span class="stat-label">Tareas completadas</span><span class="stat-val">${doneT}/${totalT}</span></div>`;
+        h+='<div class="stat-divider" style="margin-left:auto"></div><div class="stat-item"><span class="stat-label">Tareas completadas</span><span class="stat-val">'+doneT+'/'+totalT+'</span></div>';
         bar.innerHTML=h;
     } else {
-        const all=Object.values(dailyState), done=all.filter(Boolean).length, pct=Math.round(done/all.length*100);
-        const now=new Date();
-        let h=`<div class="stat-item"><span class="stat-label">Progreso del día</span><span class="stat-val">${done}/${all.length} tareas</span></div>`;
-        h+=`<div class="stat-divider"></div><div class="stat-item"><span class="stat-label">Completado</span><span class="stat-val" style="color:${pct===100?'#15803D':'#D64294'}">${pct}%</span></div>`;
-        h+=`<div class="stat-divider" style="margin-left:auto"></div><div class="stat-item"><span class="stat-label">Hoy</span><span class="stat-val">${now.toLocaleDateString('es-CL',{weekday:'short',day:'numeric',month:'short'})}</span></div>`;
+        var all=Object.values(dailyState), done=all.filter(Boolean).length, pct=Math.round(done/all.length*100);
+        var now=new Date();
+        var h='<div class="stat-item"><span class="stat-label">Progreso del dia</span><span class="stat-val">'+done+'/'+all.length+' tareas</span></div>';
+        h+='<div class="stat-divider"></div><div class="stat-item"><span class="stat-label">Completado</span><span class="stat-val" style="color:'+(pct===100?'#15803D':'#D64294')+'">'+pct+'%</span></div>';
+        h+='<div class="stat-divider" style="margin-left:auto"></div><div class="stat-item"><span class="stat-label">Hoy</span><span class="stat-val">'+now.toLocaleDateString('es-CL',{weekday:'short',day:'numeric',month:'short'})+'</span></div>';
         bar.innerHTML=h;
     }
 }
 
-/* ── Tabs ── */
 function switchTab(tab){
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    document.getElementById(`tab-${tab}`).classList.add('active');
-    document.getElementById(`panel-${tab}`).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+    document.getElementById('tab-'+tab).classList.add('active');
+    document.getElementById('panel-'+tab).classList.add('active');
     renderStats();
 }
 
-/* ── Toast ── */
 function showToast(msg){
-    const t=document.getElementById('toast');
+    var t=document.getElementById('toast');
     document.getElementById('toast-msg').textContent=msg;
     t.style.display='flex';
     clearTimeout(window._tt);
-    window._tt=setTimeout(()=>t.style.display='none',2200);
+    window._tt=setTimeout(function(){t.style.display='none';},2200);
 }
 
 renderDashboard();

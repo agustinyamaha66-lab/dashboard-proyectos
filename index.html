@@ -232,6 +232,17 @@ const scripts = [
     ]
 },
 {
+    id:'scraper_buk', nombre:'Buk_Importador_documentos', estado:'Finalizado', conexion:'GOOGLE-CLOUD',
+    desc_short:'Carga de anexos a buk',
+    desc_long:'Automatizacion encargada de descargar diariamente anexos mediante web scraping en la pagina de bukValdishopper , Este se alimenta directamente de google drive donde se suben los anexos.',
+    tareas:[
+        {t:'Carga de archivos automaticamente', done:true},
+        {t:'Validacion de datos', done:true},
+        {t:'Configuracion de la descarga automatica', done:true},
+        {t:'configurar la carga de los nuevos archivos y la eliminacion de los que se suben', done:true}
+    ]
+},
+{
     id: 'Prestadores', 
     nombre: 'Prestadores habilitados vigentes', 
     estado: 'Planificacion', 

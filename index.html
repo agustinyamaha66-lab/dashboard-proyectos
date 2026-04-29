@@ -233,7 +233,7 @@ const scripts = [
     ]
 },
 {
-    id:'scraper_buk', nombre:'Buk_Importador_documentos', estado:'Finalizado', conexion:'GOOGLE-CLOUD',
+    id:'scraper_buk', nombre:'Buk_Documentos', estado:'Finalizado', conexion:'GOOGLE-CLOUD',
     desc_short:'Carga de anexos a buk',
     desc_long:'Automatizacion encargada de descargar diariamente anexos mediante web scraping en la pagina de bukValdishopper , Este se alimenta directamente de google drive donde se suben los anexos.',
     tareas:[
@@ -241,6 +241,17 @@ const scripts = [
         {t:'Validacion de datos', done:true},
         {t:'Configuracion de la descarga automatica', done:true},
         {t:'configurar la carga de los nuevos archivos y la eliminacion de los que se suben', done:true}
+    ]
+},
+{
+    id:'scraper', nombre:'Ape2', estado:'Finalizado', conexion:'Rotor',
+    desc_short:'Sube data limpia de trbajadores de frax ',
+    desc_long:'Limpia y cruza trabajadores de frax con un sheets',
+    tareas:[
+        {t:'Descarga y carga archivos', done:true},
+        {t:'Validacion de datos', done:true},
+        {t:'Configuracion de la descarga automatica', done:true},
+        {t:'Cruzar informacion descargada con el sheets, done:true}
     ]
 },
 {

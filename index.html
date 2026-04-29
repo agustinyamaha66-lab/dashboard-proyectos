@@ -31,9 +31,11 @@
         .card { background: white; border-radius: 16px; border: 1px solid #E4E8F3; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(11,28,73,.06); transition: box-shadow .2s, transform .2s; }
         .card:hover { box-shadow: 0 8px 24px rgba(11,28,73,.12); transform: translateY(-2px); }
         .card-header { padding: 1.25rem 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; }
+        /* FIX: card-title-row needed display flex column */
+        .card-title-row { display: flex; flex-direction: column; flex: 1; min-width: 0; }
         .card-nombre { font-size: 1.1rem; font-weight: 800; color: #0B1C49; line-height: 1.2; margin-bottom: .2rem; }
         .card-desc-short { font-size: .72rem; color: #6B7698; font-weight: 500; line-height: 1.5; }
-        .badge { font-size: .6rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; padding: .25rem .6rem; border-radius: 20px; white-space: nowrap; }
+        .badge { font-size: .6rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; padding: .25rem .6rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
         .badge-encurso { background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE; }
         .badge-desarrollo { background:#FFF7ED; color:#C2410C; border:1px solid #FED7AA; }
         .badge-planificacion { background:#F5F3FF; color:#6D28D9; border:1px solid #DDD6FE; }
@@ -121,7 +123,7 @@
 </header>
 <div class="nav-tabs">
     <button class="tab-btn active" onclick="switchTab('proyectos')" id="tab-proyectos">Proyectos <span class="tab-badge" id="tbadge-proyectos">5</span></button>
-    <button class="tab-btn" onclick="switchTab('scripts')" id="tab-scripts">Scripts <span class="tab-badge" id="tbadge-scripts">2</span></button>
+    <button class="tab-btn" onclick="switchTab('scripts')" id="tab-scripts">Scripts <span class="tab-badge" id="tbadge-scripts">4</span></button>
     <button class="tab-btn" onclick="switchTab('diario')" id="tab-diario">Tareas Diarias <span class="tab-badge" id="tbadge-diario">--</span></button>
 </div>
 <div class="stats-bar" id="stats-bar"></div>
@@ -165,8 +167,8 @@ const proyectos = [
         ]},
         {t:'Limpiar informacion HD', done:false},
         {t:'Panel interactivo distintas pestanas en una sola', done:false, subtareas:[
-            {t:'Diseñar layout base', done:false},
-            {t:'Implementar navegacion por pestañas', done:false}
+            {t:'Disenar layout base', done:false},
+            {t:'Implementar navegacion por pestanas', done:false}
         ]}
     ]
 },
@@ -220,9 +222,10 @@ const proyectos = [
 }
 ];
 
+// FIX: IDs únicos para cada script + string sin cerrar corregido en Ape2
 const scripts = [
 {
-    id:'scraper', nombre:'Scraper-Geosort', estado:'Finalizado', conexion:'SIGMC - GCP',
+    id:'scraper_geosort', nombre:'Scraper-Geosort', estado:'Finalizado', conexion:'SIGMC - GCP',
     desc_short:'Descarga semanal automatizada de informacion Falabella.',
     desc_long:'Automatizacion encargada de descargar semanalmente la informacion de <strong>Falabella</strong> mediante web scraping. Alimenta directamente al modulo Falabella de SIGMC.',
     tareas:[
@@ -235,42 +238,38 @@ const scripts = [
 {
     id:'scraper_buk', nombre:'Buk_Documentos', estado:'Finalizado', conexion:'GOOGLE-CLOUD',
     desc_short:'Carga de anexos a buk',
-    desc_long:'Automatizacion encargada de descargar diariamente anexos mediante web scraping en la pagina de bukValdishopper , Este se alimenta directamente de google drive donde se suben los anexos.',
+    desc_long:'Automatizacion encargada de descargar diariamente anexos mediante web scraping en la pagina de bukValdishopper. Se alimenta directamente de Google Drive donde se suben los anexos.',
     tareas:[
         {t:'Carga de archivos automaticamente', done:true},
         {t:'Validacion de datos', done:true},
         {t:'Configuracion de la descarga automatica', done:true},
-        {t:'configurar la carga de los nuevos archivos y la eliminacion de los que se suben', done:true}
+        {t:'Configurar la carga de los nuevos archivos y la eliminacion de los que se suben', done:true}
     ]
 },
 {
-    id:'scraper', nombre:'Ape2', estado:'Finalizado', conexion:'Rotor',
-    desc_short:'Sube data limpia de trbajadores de frax ',
-    desc_long:'Limpia y cruza trabajadores de frax con un sheets',
+    id:'ape2', nombre:'Ape2', estado:'Finalizado', conexion:'Rotor',
+    desc_short:'Sube data limpia de trabajadores de Frax.',
+    desc_long:'Limpia y cruza trabajadores de Frax con un Sheets.',
     tareas:[
         {t:'Descarga y carga archivos', done:true},
         {t:'Validacion de datos', done:true},
         {t:'Configuracion de la descarga automatica', done:true},
-        {t:'Cruzar informacion descargada con el sheets, done:true}
+        {t:'Cruzar informacion descargada con el Sheets', done:true}
     ]
 },
 {
-    id: 'Prestadores', 
-    nombre: 'Prestadores habilitados vigentes', 
-    estado: 'Planificacion', 
-    conexion: 'Cloud Run, GCP', 
-    desc_short: 'Proyecto para subir archivos de finanzas a personas', 
-    desc_long: 'Plataforma de <strong>Camilo</strong> para consolidar la informacion y poder bajarla a personas en donde puedan consultar la informacion de 6 meses',
-    tareas: [
-        {
-            t: 'Revisar los script', 
-            done: false,
-            subtareas: [
-                {t: 'Leer script', done: false},
-                {t: 'Validar datos de los sheets compartidos', done: false},
-                {t: 'Sacar información relevante para la muestra de datos', done: false}
-            ]
-        }
+    id:'prestadores',
+    nombre:'Prestadores habilitados vigentes',
+    estado:'Planificacion',
+    conexion:'Cloud Run, GCP',
+    desc_short:'Proyecto para subir archivos de finanzas a personas.',
+    desc_long:'Plataforma de <strong>Camilo</strong> para consolidar la informacion y poder bajarla a personas donde puedan consultar la informacion de 6 meses.',
+    tareas:[
+        {t:'Revisar los scripts', done:false, subtareas:[
+            {t:'Leer script', done:false},
+            {t:'Validar datos de los sheets compartidos', done:false},
+            {t:'Sacar informacion relevante para la muestra de datos', done:false}
+        ]}
     ]
 }
 ];

@@ -258,6 +258,16 @@ const scripts = [
     ]
 },
 {
+    id:'WMC', nombre:'Personas Asociadas', estado:'Finalizado', conexion:'Rotor-Trabajo',
+    desc_short:'Exportador de datos',
+    desc_long:'Entra a un powerbi donde va a descarga la informacion y luego lo sube a un bucket donde lo consume rotor',
+    tareas:[
+        {t:'Descarga y carga archivos aun bucket ', done:true},
+        {t:'Validacion de datos', done:true},
+        {t:'Configuracion de la descarga automatica', done:true}
+    ]
+},
+{
     id:'prestadores',
     nombre:'Prestadores habilitados vigentes',
     estado:'Planificacion',

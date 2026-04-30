@@ -247,7 +247,7 @@ const scripts = [
     ]
 },
 {
-    id:'ape2', nombre:'Ape2', estado:'Finalizado', conexion:'Rotor',
+    id:'ape2', nombre:'Ape2', estado:'Finalizado', conexion:'Rotor-Trabajo',
     desc_short:'Sube data limpia de trabajadores de Frax.',
     desc_long:'Limpia y cruza trabajadores de Frax con un Sheets.',
     tareas:[
@@ -255,6 +255,18 @@ const scripts = [
         {t:'Validacion de datos', done:true},
         {t:'Configuracion de la descarga automatica', done:true},
         {t:'Cruzar informacion descargada con el Sheets', done:true}
+    ]
+},
+{
+    id:'Buk', nombre:'Buk Maestro', estado:'Finalizado', conexion:'Rotor-Trabajo',
+    desc_short:'Descarga la data de un mes',
+    desc_long:'Descarga data de un mes de antiguedad cada una hora se hace con un limete de 4 y lo borra',
+    tareas:[
+        {t:'Descarga y carga de datos', done:true},
+        {t:'Validacion de datos ', done:true},
+        {t:'Configuracion de la descarga automatica', done:true},
+        {t:'Hacer la descarga de 4 e ir borrando los anteriores', done:true},
+        {t:'Guardarlos en un bucket que conecte con rotor', done:true}
     ]
 },
 {
@@ -297,9 +309,9 @@ const dailyGroups = [
     ]},
     {id:'falabella', name:'Actualizacion Falabella Power BI', icon:'&#128202;', iconBg:'#FFF7ED', meta:'Carga manual (Victor de vacaciones) Solo Lunes o Martes', tasks:[
         {id:'f1', name:'Subir archivos Falabella actualizados al Power BI', note:'Carga manual para tener la data lista para la reunion del miercoles.', freq:'lu-ma'},
-        {id:'f2', name:'Verificar datos cargados en el reporte', note:'Revisar tablas y visualizaciones antes de la reunion.', freq:'lu-ma'},
+        {id:'f2', name:'Verificar datos cargados en el reporte', freq:'lu-ma'},
     ]},
-    {id:'solicitudes', name:'Solicitudes y Apoyo Ad-hoc', icon:'&#129309;', iconBg:'#FFF0F7', meta:'Peticiones de otros equipos -- surgen durante el dia', tasks:[
+    {id:'solicitudes', name:'Solicitudes y Apoyo ya sea como script o funcionalidades', icon:'&#129309;', iconBg:'#FFF0F7', meta:'Peticiones de otros equipos -- surgen durante el dia', tasks:[
         {id:'r1', name:'Atender solicitudes de otros equipos o personas', note:'Priorizar segun urgencia. Pueden llegar en cualquier momento del dia.', freq:'adhoc'},
         {id:'r2', name:'Registrar brevemente lo atendido', note:'Nota rapida de que se ayudo y a quien, para trazabilidad.', freq:'adhoc'},
     ]}

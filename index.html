@@ -122,7 +122,7 @@
     <div class="header-sub">Mejora Continua</div>
 </header>
 <div class="nav-tabs">
-    <button class="tab-btn active" onclick="switchTab('proyectos')" id="tab-proyectos">Proyectos <span class="tab-badge" id="tbadge-proyectos">5</span></button>
+    <button class="tab-btn active" onclick="switchTab('proyectos')" id="tab-proyectos">Proyectos <span class="tab-badge" id="tbadge-proyectos">6</span></button>
     <button class="tab-btn" onclick="switchTab('scripts')" id="tab-scripts">Scripts <span class="tab-badge" id="tbadge-scripts">4</span></button>
     <button class="tab-btn" onclick="switchTab('diario')" id="tab-diario">Tareas Diarias <span class="tab-badge" id="tbadge-diario">--</span></button>
 </div>
@@ -218,6 +218,36 @@ const proyectos = [
         {t:'Elaboracion de manual de uso', done:true},
         {t:'Confirmacion de reclutados y app instalada', done:false},
         {t:'Actualizacion de nuevas funciones o visuales (14 dias)', done:false}
+    ]
+},
+{
+    id:'automatizacion-reclamos', nombre:'Automatización Reclamos', estado:'En Curso', conexion:'SIGMC - Beetrak - Walmart',
+    desc_short:'Sistema de descarga, revisión y carga de reclamos desde Beetrak cruzados con data de Walmart.',
+    desc_long:'Automatización integrada a <strong>SIGMC</strong> para gestionar reclamos de LAT/HD y PU. El sistema descarga data de <strong>Beetrak</strong>, realiza validaciones y limpiezas, y la carga a la web para cruzarla con información de <strong>Walmart</strong>. Permite identificar reclamos faltantes y agregar registros de relleno según corresponda.',
+    tareas:[
+        {t:'Descargar data de Beetrak', done:false, subtareas:[
+            {t:'Configurar conexion a API Beetrak', done:false},
+            {t:'Crear script de extraccion diaria', done:false}
+        ]},
+        {t:'Revisar y validar data descargada', done:false, subtareas:[
+            {t:'Identificar campos requeridos', done:false},
+            {t:'Detectar registros incompletos o duplicados', done:false}
+        ]},
+        {t:'Modificar y limpiar informacion', done:false, subtareas:[
+            {t:'Normalizar formatos de datos', done:false},
+            {t:'Aplicar reglas de negocio', done:false}
+        ]},
+        {t:'Cargar data a la web (SIGMC)', done:false},
+        {t:'Cruzar con informacion de Walmart', done:false, subtareas:[
+            {t:'Mapear campos entre sistemas', done:false},
+            {t:'Validar coincidencias', done:false}
+        ]},
+        {t:'Revisar reclamos LAT y HD', done:false},
+        {t:'Agregar registros de relleno', done:false, subtareas:[
+            {t:'Identificar criterios de relleno', done:false},
+            {t:'Crear registros complementarios', done:false}
+        ]},
+        {t:'Generar reporte de reclamos procesados', done:false}
     ]
 }
 ];
